@@ -114,7 +114,36 @@ fn test_union_inplace():
     b2 = fiby(2)
     b2.union_inplace(fiby(1))
     assert_vec(b2.sorted_elements(), vec(1, 2))
+
+fn test_union():
+    var b1 = fiby(1, 2, 3)
+    var b3 = b1.union(fiby())
+    assert_vec(b3.sorted_elements(), vec(1, 2, 3))
     
+    var b2 = fiby()
+    b3 = b2.union(b1)
+    assert_vec(b3.sorted_elements(), vec(1, 2, 3))
+    
+    b3 = b1.union(fiby(3, 4, 1))
+    assert_vec(b3.sorted_elements(), vec(1, 2, 3, 4))
+    
+    b3 = b1.union(fiby(2, 3))
+    assert_vec(b3.sorted_elements(), vec(1, 2, 3, 4))
+    
+    b3 = b1.union(fiby(9, 12, 11, 10))
+    assert_vec(b3.sorted_elements(), vec(1, 2, 3, 4, 9, 10, 11, 12))
+    
+    b2 = fiby(1)
+    b3 = b2.union(fiby(1))
+    assert_vec(b3.sorted_elements(), vec(1))
+    
+    b2.union_inplace(fiby(2))
+    assert_vec(b2.sorted_elements(), vec(1, 2))
+    
+    b2 = fiby(2)
+    b2.union_inplace(fiby(1))
+    assert_vec(b2.sorted_elements(), vec(1, 2))
+
     
 fn test_intersection_inplace():
     var b1 = fiby(1, 2, 3)
@@ -229,13 +258,7 @@ fn test_symmetric_difference_inplace():
     b2 = fiby(2)
     b2.symmetric_difference_inplace(fiby(1))
     assert_vec(b2.sorted_elements(), vec(1, 2))
-    
-fn test_union():
-    let b0 = fiby(2)
-    let b1 = fiby(1)
-    # blocked by a compiler bug
-    # assert_vec(b0.union(b1).sorted_elements(), vec[Int]())
-    
+        
 fn test_disjoint():
     _= assert_true(fiby().is_disjoint(fiby()))
     _= assert_true(fiby().is_disjoint(fiby(1)))
@@ -356,7 +379,8 @@ fn main():
     test_difference_inplace()
     test_other_difference_inplace()
     test_symmetric_difference_inplace()
-    test_union()
+    # Uncomment once https://github.com/modularml/mojo/issues/500 is shipped
+    # test_union()
     test_disjoint()
     test_subset()
     test_superset()

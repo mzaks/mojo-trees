@@ -108,68 +108,82 @@ fn perf_test_union(size: Int, balanced: Bool) -> Float64:
     var f1 = fiby()
     var f2 = fiby()
     for _ in range(size):
-        let i = random_si64(-size, size).to_int()
-        f1.add(i)
-        f2.add(i)
+        let i1 = random_si64(-size, size).to_int()
+        f1.add(i1)
+        let i2 = random_si64(-size, size).to_int()
+        f2.add(i2)
     if balanced:
         f1.balance()
         f2.balance()
-    
+    let s1 = f1.__len__()
+    let s2 = f2.__len__()
+
     let tik = now()
     f1.union_inplace(f2)
     let tok = now()
-    
+    # print(s1, s2, f1.__len__())
     return (tok - tik) / Float64(size)
 
 fn perf_test_intersection(size: Int, balanced: Bool) -> Float64:
     var f1 = fiby()
     var f2 = fiby()
     for _ in range(size):
-        let i = random_si64(-size, size).to_int()
-        f1.add(i)
-        f2.add(i)
+        let i1 = random_si64(-size, size).to_int()
+        f1.add(i1)
+        let i2 = random_si64(-size, size).to_int()
+        f2.add(i2)
 
     if balanced:
         f1.balance()
         f2.balance()
-    
+    let s1 = f1.__len__()
+    let s2 = f2.__len__()
+
     let tik = now()
     f1.intersection_inplace(f2)
     let tok = now()
-    
+    # print(s1, s2, f1.__len__())
     return (tok - tik) / Float64(size)
 
 fn perf_test_difference(size: Int, balanced: Bool) -> Float64:
     var f1 = fiby()
     var f2 = fiby()
     for _ in range(size):
-        let i = random_si64(-size, size).to_int()
-        f1.add(i)
-        f2.add(i)
+        let i1 = random_si64(-size, size).to_int()
+        f1.add(i1)
+        let i2 = random_si64(-size, size).to_int()
+        f2.add(i2)
     if balanced:
         f1.balance()
         f2.balance()
+    let s1 = f1.__len__()
+    let s2 = f2.__len__()
     
     let tik = now()
     f1.difference_inplace(f2)
     let tok = now()
-    
+    # print(s1, s2, f1.__len__())
     return (tok - tik) / Float64(size)
 
 fn perf_test_symmetric_difference(size: Int, balanced: Bool) -> Float64:
     var f1 = fiby()
     var f2 = fiby()
     for _ in range(size):
-        let i = random_si64(-size, size).to_int()
-        f1.add(i)
-        f2.add(i)
+        let i1 = random_si64(-size, size).to_int()
+        f1.add(i1)
+        let i2 = random_si64(-size, size).to_int()
+        f2.add(i2)
     if balanced:
         f1.balance()
         f2.balance()
+    let s1 = f1.__len__()
+    let s2 = f2.__len__()
     
     let tik = now()
     f1.symmetric_difference_inplace(f2)
     let tok = now()
+
+    # print(s1, s2, f1.__len__())
     
     return (tok - tik) / Float64(size)
 
@@ -215,8 +229,8 @@ fn main():
 
     print("===Contains Balanced===")
     print(perf_test_contains(10, True, r))
-    print(perf_test_contains(300, True, r))
     print(perf_test_contains(100, True, r))
+    print(perf_test_contains(300, True, r))
     print(perf_test_contains(500, True, r))
     print(perf_test_contains(1_000, True, r))
     print(perf_test_contains(3_000, True, r))
@@ -239,8 +253,8 @@ fn main():
 
     print("===Delete Balanced===")
     print(perf_test_delete(10, True, r))
-    print(perf_test_delete(300, True, r))
     print(perf_test_delete(100, True, r))
+    print(perf_test_delete(300, True, r))
     print(perf_test_delete(500, True, r))
     print(perf_test_delete(1_000, True, r))
     print(perf_test_delete(3_000, True, r))
@@ -261,10 +275,10 @@ fn main():
     print(perf_test_union(30_000, False))
     print(perf_test_union(50_000, False))
 
-    print("===Delete Balanced===")
+    print("===Union Balanced===")
     print(perf_test_union(10, True))
-    print(perf_test_union(300, True))
     print(perf_test_union(100, True))
+    print(perf_test_union(300, True))
     print(perf_test_union(500, True))
     print(perf_test_union(1_000, True))
     print(perf_test_union(3_000, True))
@@ -287,8 +301,8 @@ fn main():
 
     print("===Intersection Balanced===")
     print(perf_test_intersection(10, True))
-    print(perf_test_intersection(300, True))
     print(perf_test_intersection(100, True))
+    print(perf_test_intersection(300, True))
     print(perf_test_intersection(500, True))
     print(perf_test_intersection(1_000, True))
     print(perf_test_intersection(3_000, True))
@@ -311,8 +325,8 @@ fn main():
 
     print("===Difference Balanced===")
     print(perf_test_difference(10, True))
-    print(perf_test_difference(300, True))
     print(perf_test_difference(100, True))
+    print(perf_test_difference(300, True))
     print(perf_test_difference(500, True))
     print(perf_test_difference(1_000, True))
     print(perf_test_difference(3_000, True))
@@ -335,8 +349,8 @@ fn main():
 
     print("===Symmetric Difference Balanced===")
     print(perf_test_symmetric_difference(10, True))
-    print(perf_test_symmetric_difference(300, True))
     print(perf_test_symmetric_difference(100, True))
+    print(perf_test_symmetric_difference(300, True))
     print(perf_test_symmetric_difference(500, True))
     print(perf_test_symmetric_difference(1_000, True))
     print(perf_test_symmetric_difference(3_000, True))

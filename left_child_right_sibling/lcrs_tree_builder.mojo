@@ -1,4 +1,4 @@
-from lcrs_tree import LCRSTree
+from .lcrs_tree import LCRSTree
 
 struct LCRSTreeBuilder[T: AnyType]:
     var _tree: LCRSTree[T]

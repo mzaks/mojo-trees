@@ -1,5 +1,5 @@
-from trie_dict import TrieDict
 from time import now
+from trie_dict import TrieDict
 
 fn vec[T: AnyType](*elements: T) -> DynamicVector[T]:
     let elements_list: VariadicList[T] = elements
@@ -9,7 +9,6 @@ fn vec[T: AnyType](*elements: T) -> DynamicVector[T]:
     return result
 
 fn main():
-
     let corpus = vec('Lorem', 'ipsum', 'dolor', 'sit', 'amet,', 'consectetur', 'adipiscing', 'elit.', 'Quisque', 'orci', 'urna,', 'pretium', 'et', 'porta', 'ac,', 'porttitor', 'sit', 'amet', 'sem.', 'Fusce', 'sagittis', 'lorem', 'neque,', 'vitae', 'sollicitudin', 'elit', 'suscipit', 'et.', 'In', 'interdum', 'convallis', 'nisl', 'in', 'ornare.', 'Vestibulum', 'ante', 'ipsum', 'primis', 'in', 'faucibus', 'orci', 'luctus', 'et', 'ultrices', 'posuere', 'cubilia', 'curae;', 'Aliquam', 'erat', 'volutpat.', 'Morbi', 'mollis', 'iaculis', 'lectus', 'ac', 'tincidunt.', 'Fusce', 'nisi', 'lacus,', 'semper', 'eu', 'dignissim', 'et,', 'malesuada', 'non', 'mi.', 'Sed', 'euismod', 'urna', 'vel', 'elit', 'faucibus,', 'eu', 'bibendum', 'ante', 'fringilla.', 'Curabitur', 'tempus', 'in', 'turpis', 'at', 'mattis.', 'Aliquam', 'erat', 'volutpat.', 'Donec', 'maximus', 'elementum', 'felis,', 'sit', 'amet', 'dignissim', 'augue', 'tincidunt', 'blandit.', 'Aliquam', 'fermentum,', 'est', 'eu', 'mollis.')
 
     var t = TrieDict[Int]()

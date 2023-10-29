@@ -1,5 +1,6 @@
 from trie_dict import TrieDict
 
+
 fn main():
     var t = TrieDict[Int]()
     _ = t.put("Maxim", 12)

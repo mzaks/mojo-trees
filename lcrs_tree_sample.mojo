@@ -1,5 +1,5 @@
-from lcrs_tree import LCRSTree, int_to_str
-from lcrs_tree_builder import LCRSTreeBuilder
+from left_child_right_sibling import LCRSTree, LCRSTreeBuilder
+from helpers import int_to_str
 
 fn v1(i: UInt16, e: Int) -> Bool:
     print(i, e)

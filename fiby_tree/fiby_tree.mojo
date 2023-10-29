@@ -1,5 +1,4 @@
 from math.bit import bit_length
-from utils.vector import DynamicVector, UnsafeFixedVector 
 from utils.list import VariadicList
 
 struct FibyTree[T: AnyType, cmp: fn(T, T) -> Int, to_str: fn(T) -> String]:

@@ -1,5 +1,3 @@
-from utils.vector import DynamicVector, UnsafeFixedVector
-
 struct LCRSTree[T: AnyType]:
     var elements: DynamicVector[T]
     var left_child: DynamicVector[UInt16]
@@ -395,12 +393,3 @@ struct LCRSTree[T: AnyType]:
         let children = self.children_indices(index)
         for i in range(len(children)):
             self._print[to_str](indentation + " ", children[i])
-        
-
-
-
-fn int_to_str(i: Int) -> String:
-    return String(i)
-
-fn int_eq(i1: Int, i2: Int) -> Bool:
-    return i1 == i2

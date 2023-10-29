@@ -1,17 +1,8 @@
 from fiby_tree import FibyTree
+from helpers import cmp_strl, stsl
 from time import now
 from math import min
 
-fn cmp_strl(a: StringLiteral, b: StringLiteral) -> Int:
-    let l = min(len(a), len(b))
-    let p1 = DTypePointer[DType.int8](a.data()).bitcast[DType.uint8]()
-    let p2 = DTypePointer[DType.int8](b.data()).bitcast[DType.uint8]()
-    let diff = memcmp(p1, p2, l)
-
-    return diff if diff != 0 else len(a) - len(b)
-
-fn stsl(a: StringLiteral) -> String:
-    return a
 
 fn main():
     var tik = now()
